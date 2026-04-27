@@ -1,3 +1,3 @@
-﻿Console.WriteLine("Ingrese la contraseña: ");
+﻿Console.WriteLine("Ingrese la contraseña:");
 
 double contraseña = double.Parse(Console.ReadLine());
