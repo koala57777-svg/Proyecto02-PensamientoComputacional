@@ -4,6 +4,7 @@ string Password = "E$quizo1984";
 string Usuario = "Koalas";
 string UsuarioUsado = "";
 string UserPassword = "";
+int intentos = 3;
 bool login=false;
 
 void TClear()
@@ -15,8 +16,10 @@ void TClear()
 void MClear()
 {
     Console.WriteLine();
-    Console.WriteLine("Presione cualquier tecla para continuar...");
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.Write("Presione cualquier tecla para continuar: ");
     Console.ReadKey();
+    Console.ResetColor();
     Console.Clear();
 }
 
@@ -49,12 +52,16 @@ string LeerContra()
 }
 
 for (int i = 0; i < 3; i++)
-{ 
-    Console.Write($"Ingrese el usuario: ");
+{
+    Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+    Console.WriteLine("-_-                 SISTEMA DE ACCESO                 -_-");
+    Console.WriteLine("-_-                 Juego de Ajedrez                  -_-");
+    Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+    Console.WriteLine();
+    Console.Write($"Por favor, ingrese el usuario, intento {intentos}: ");
     UsuarioUsado = Console.ReadLine();
     Console.WriteLine();
-    Console.WriteLine($"Intento {i + 1} de 3");
-    Console.Write($"Ingrese la contraseña: ");
+    Console.Write($"Por favor, ingrese la contraseña, intento {intentos}: ");
     UserPassword = LeerContra();
     Console.WriteLine();
     Console.WriteLine();
@@ -66,20 +73,41 @@ for (int i = 0; i < 3; i++)
     }
     else
     {
-        Console.Write($"Datos incorrectos. Te quedan {3-i-1} de 3 intentos.");
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+        Console.WriteLine("-_-                  DATOS INCORRECTOS                -_-");
+        Console.WriteLine($"-_-            Te quedan {3-i-1} de 3 intentos              -_-");
+        Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+        Console.WriteLine();
+        Console.Write("Presione cualquier letra para continuar: ");
+        intentos--;
        TClear();
+        Console.ResetColor();
     }
  
 }
 Console.Clear();
 if (login == true)
 {
-    Console.WriteLine("El usuario y contraseña ingresados son correctos.\n\n¡Bienvenido!");
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+    Console.WriteLine("-_-                   DATOS CORRECTOS                 -_-");
+    Console.WriteLine("-_-  El usuario y contraseña ingresados son correctos -_-");
+    Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+    Console.ResetColor();
     MClear();
 }
 else if (login == false)
 {
-
-    Console.WriteLine("Intentos acabados. Acceso denegado.");
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.Write("Intentos acabados. Acceso denegado.\nIngrese cualquier letra para salir del programa: ");
     Console.ReadKey();
+    Console.ResetColor();
+    return;
 }
+Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+Console.WriteLine("-_-          ¡Bienvenido al sistema!          -_-");
+Console.WriteLine("-_-             Juego de Ajedrez              -_-");
+Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+Console.WriteLine();
