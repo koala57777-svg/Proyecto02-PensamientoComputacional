@@ -128,8 +128,9 @@ do
     validacion = int.TryParse(Console.ReadLine(), out opcion);
     while (!validacion || opcion < 1 || opcion > 4)
     {
+        Console.WriteLine();
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write("Opción no válida. Por favor, seleccione una opción del 1 al 4: ");
+        Console.Write("Opción no válida.\nPor favor, seleccione una opción del 1 al 4: ");
         Console.ResetColor();
         validacion = int.TryParse(Console.ReadLine(), out opcion);
     }
@@ -145,6 +146,33 @@ do
             Console.WriteLine("-_-              Reglas del Juego             -_-");
             Console.WriteLine("-_-                 De Ajedrez                -_-");
             Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+            Console.WriteLine();
+            Console.WriteLine("-_-_-_-_-_-_-_-  PIEZAS POR JUGADOR  -_-_-_-_-_-_-");
+            Console.WriteLine("   Rey      ->  x1");
+            Console.WriteLine("   Torre    ->  x2");
+            Console.WriteLine("   Soldado  ->  x4");
+            Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+            Console.WriteLine();
+            Console.WriteLine("-_-_-_-_-_-_-_-_-  MOVIMIENTOS  -_-_-_-_-_-_-_-_-");
+            Console.WriteLine("   Rey     : Una casilla en cualquier direccion.");
+            Console.WriteLine("   Torre   : Linea recta, no salta piezas.");
+            Console.WriteLine("   Soldado : Avanza una, ataca diagonal,");
+            Console.WriteLine("             no puede retroceder.");
+            Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+            Console.WriteLine();
+            Console.WriteLine("-_-_-_-_-_-_-_-  ATAQUE Y VICTORIA  -_-_-_-_-_-_-");
+            Console.WriteLine("   Moverse a casilla rival -> elimina esa pieza.");
+            Console.WriteLine("   Ganas si: Capturas al Rey rival.");
+            Console.WriteLine("   Ganas si: Eliminas todas las piezas del rival.");
+            Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+            Console.WriteLine();
+            Console.WriteLine("-_-_-_-_-_-_-_-_-_-  PROHIBIDO  -_-_-_-_-_-_-_-_-");
+            Console.WriteLine("   Salirse del tablero.");
+            Console.WriteLine("   Mover piezas del rival.");
+            Console.WriteLine("   Ir a casilla propia ocupada.");
+            Console.WriteLine("   Torre no puede atravesar piezas.");
+            Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+            Console.WriteLine();
             Console.Write("Presione cualquier tecla para continuar: ");
             Console.ReadKey();
             break;
