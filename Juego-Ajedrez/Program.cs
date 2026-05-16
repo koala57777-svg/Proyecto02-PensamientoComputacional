@@ -54,16 +54,41 @@ namespace Juego_Ajedrez
         {
             public Rey(string equipo) : base(equipo) => Simbolo = equipo == "J1" ? "S1" : "S2";
 
-            public override bool MovimientoValido(int f0, int c0, int fD, int cD, Pieza[,] tablero)
+            public override bool MovimientoValido(int fO, int cO, int fD, int cD, Pieza[,] tablero)
             {
                 int dir = Equipo == "J1" ? 1 : -1;
-                if (cD == c0 && fD == f0 + dir && tablero[fD, cD] == null) return true;
+                if (cD == cO && fD == fO + dir && tablero[fD, cD] == null) return true;
 
-                if (Math.Abs(cD - c0) == 1 && fD == f0 + dir && tablero[fD, cD] != null) return true;
+                if (Math.Abs(cD - cO) == 1 && fD == fO + dir && tablero[fD, cD] != null) return true;
 
                 return false;
             }
 
+        }
+
+        public class Torre : Pieza
+        {
+            public Torre(string equipo) : base(equipo) => Simbolo = equipo == "J1" ? "T1" : "T2";
+
+            public override bool MovimientoValido(int fO, int cO, int fD, int cD, Pieza[,] tablero)
+            {
+                if (fO != fD && cO != cD) return false;
+
+                if (fO == fD)
+                {
+                    int paso = cO < cD ? 1 : -1;
+                    for (int c = cO + paso; c != cD; c += paso)
+                        if (tablero[fO, c] != null) return false;
+                }
+                else
+                {
+                    int paso = fO < fD ? 1 : -1;
+                    for (int f = fO + paso; f != fD; f += paso)
+                        if (tablero[f, cO] != null) return false;
+                }
+                return true;
+                
+            }
         }
 
         static void Main(string[] args)
