@@ -24,9 +24,9 @@ namespace Juego_Ajedrez
             public bool turno { get; set; }
             public int puntaje { get; private set; }
 
-            public Jugador(string nombre, string color)
+            public Jugador(string nombre1, string color)
             {
-                nombre = nombre;
+                this.nombre=nombre1;
                 puntaje = 0;
                 turno = true;
             }
@@ -40,6 +40,14 @@ namespace Juego_Ajedrez
             {
                 Console.WriteLine($"Jugador: {nombre} | Color: {color}");
             }
+        }
+
+        public abstract class Pieza
+        {
+            public string Equipo { get; set; }
+            public string Simbolo { get; protected set; }
+            public Pieza(string equipo) => Equipo = equipo;
+            public abstract bool MovimientoValido(int fO, int cO, int FD, int CD, Pieza[,] tablero);
         }
 
         static void Main(string[] args)
