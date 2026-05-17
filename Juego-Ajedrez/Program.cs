@@ -72,8 +72,10 @@ namespace Juego_Ajedrez
 
             public override bool MovimientoValido(int fO, int cO, int fD, int cD, Pieza[,] tablero)
             {
-                if (fO != fD && cO != cD) return false;
-
+                if (fO != fD && cO != cD)
+                {
+                    return false;
+                }
                 if (fO == fD)
                 {
                     int paso = cO < cD ? 1 : -1;
@@ -87,7 +89,6 @@ namespace Juego_Ajedrez
                         if (tablero[f, cO] != null) return false;
                 }
                 return true;
-                
             }
         }
 
