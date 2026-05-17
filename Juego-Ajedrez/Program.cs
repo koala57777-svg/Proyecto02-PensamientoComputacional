@@ -90,6 +90,25 @@ namespace Juego_Ajedrez
                 }
                 return true;
             }
+            public class Soldado : Pieza
+            {
+                public Soldado(string equipo) : base(equipo) => Simbolo = equipo == "J1" ? "S1" : "S2";
+
+                public override bool MovimientoValido(int fO, int cO, int fD, int cD, Pieza[,] tablero)
+                {
+                    int dir = Equipo == "J1" ? 1 : -1:
+                    if (cD == cO && fD == fO + dir && tablero[fD, cD] == null)
+                    { 
+                        return true;
+                    }
+                    if (Math.Abs(cD - cO) == 1 && fD == fO + dir && tablero[fD, cD] != null)
+                    {
+                        return true;
+                    }
+
+                    return false;
+                }
+            }
         }
 
         static void Main(string[] args)
